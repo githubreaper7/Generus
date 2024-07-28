@@ -29,7 +29,7 @@ const Navbar = ({ onSelectOption }) => {
           <button onClick={() => onSelectOption("logout")} className="logout-button">
             Logout
           </button>
-        </li>
+        </li> 
       </ul>
     </nav>
   );

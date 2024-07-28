@@ -2,8 +2,11 @@ import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Donator } from "../models/Donator.js";
+import cookieParser from "cookie-parser";
 
 const router = express.Router();
+const app = express();
+app.use(cookieParser());
 
 router.post("/userSignup", async (req, res) => {
   const { username, email, password, address, contactNumber } = req.body;
@@ -75,6 +78,51 @@ router.post("/userLogin", async (req, res) => {
   }
 });
 
+// router.get('/:id', async (req, res) => {
+//   try {
+//     const donator = await Donator.findById(req.params.id);
+//     if (!donator) {
+//       return res.status(404).json({ message: 'Donator not found' });
+//     }
+//     res.json(donator);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+
+router.get('/getUser', async (req, res) => {
+  try {
+    const token = req.cookies.token;
+    if(!token){
+      return res.status(401).json({message: 'Access denied'});
+    }
+    const decoded = jwt.verify(token, process.env.KEY);
+    const email = decoded.email;
+
+    const user = await Donator.findOne({email});
+    res.json(user); 
+  } catch (error) {
+    res.status(500).json({message: 'Error'});
+  }
+})
+
+// Update donator by ID
+router.put('/:id', async (req, res) => {
+  const { username, address, contactNumber } = req.body;
+  try {
+    const updatedDonator = await Donator.findByIdAndUpdate(
+      req.params.id,
+      { username, address, contactNumber },
+      { new: true }
+    );
+    if (!updatedDonator) {
+      return res.status(404).json({ message: 'Donator not found' });
+    }
+    res.json(updatedDonator);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 
 const verifyUser = async (req, res, next) => {

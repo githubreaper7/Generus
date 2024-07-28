@@ -35,7 +35,6 @@ mongoose
 app.use("/auth", DonatorRouter);
 app.use("/auth", NgoRouter);
 app.use("/", DonationRouter);
- 
 
 
 //code to insert NGO data manually given down below

@@ -41,6 +41,7 @@ const MyDonations = () => {
           withCredentials: true,
         });
         setDonations(response.data);
+        console.log(response.data)
       } catch (error) {
         setError(error.response?.data?.message || 'Error fetching donations!!!');
       } finally {

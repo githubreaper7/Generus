@@ -53,7 +53,7 @@ const ActiveDonations = () => {
       setError(error.response?.data?.message || 'Error accepting donation');
     }
   };
-
+ 
   const openDialog = (id) => {
     setDonationToAccept(id);
     setShowDialog(true);
