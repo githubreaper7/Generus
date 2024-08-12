@@ -12,7 +12,8 @@ const MyDonations = () => {
   const [error, setError] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [donationToDelete, setDonationToDelete] = useState(null);
- 
+  const [showNGO, setShowNGO] = useState(false);
+  
   const customLabels = {
     menClothes: "Men's Clothes",
     womenClothes: "Women's Clothes",
@@ -100,6 +101,14 @@ const MyDonations = () => {
     setDonationToDelete(null);
   };
 
+  // const handleShowNGO = () => {
+  //   setShowNGO(true);
+  // }
+
+  // const closeShowNGO = () => {
+  //   setShowNGO(false);
+  // }
+
   const renderClothingItems = (clothingItems) => {
    
     let timeoutId = null;
@@ -153,7 +162,7 @@ const MyDonations = () => {
       .map(key => customLabels[key]) 
       .join(', ');
   };
-
+ 
   const renderCondition = (condition) => {
     return Object.keys(condition)
       .filter(key => condition[key])
@@ -201,7 +210,7 @@ const MyDonations = () => {
                 ) : donation.status === 'Accepted by NGO' ? (
                   <button className='accept-button' onClick={() => handleConfirm(donation._id)}>Confirm</button>
                 ) : (
-                  <div className='confirmed'>Confirmed</div>
+                  <button className='confirmed'>Confirmed</button>
                 )}</td>
               <td>{new Date(donation.createdAt).toLocaleDateString()}
               {donation.createdAt && (
@@ -215,6 +224,13 @@ const MyDonations = () => {
           ))}
         </tbody> 
       </table>
+{/* 
+      {showNgo && (
+        <div>
+          <p>Your donation is accepted by {donation.acceptedBy}!</p>
+          <button onClick={closeShowNGO}>Close</button>
+        </div>
+      )} */}
 
       {showDialog && (
         <div className="dialog-overlay">

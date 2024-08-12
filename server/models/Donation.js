@@ -38,10 +38,12 @@ const DonationSchema = new mongoose.Schema({
     preferredDay: String,
     status: {type: String, default: "Pending"},
     notifications: [NotificationSchema],
+    acceptedBy: {type: String, default: ""},
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    
 })
 
 const DonationModel = mongoose.model("Donation", DonationSchema);

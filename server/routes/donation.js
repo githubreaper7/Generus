@@ -1,5 +1,6 @@
 import express from "express";
 import { Donation } from "../models/Donation.js";
+import { NgoInfo } from "../models/NgoInfo.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
@@ -20,6 +21,7 @@ router.post("/donate", async (req, res) => {
       specialInstructions,
       preferredDay,
       status,
+      acceptedBy
     } = req.body;
     const token = req.cookies.token;
 
@@ -39,7 +41,8 @@ router.post("/donate", async (req, res) => {
       condition,
       specialInstructions,
       preferredDay,
-      status
+      status,
+      acceptedBy
     });
 
     await newDonation.save();
@@ -104,8 +107,16 @@ router.delete("/delete-donation/:id", async (req, res) => {
 
 router.post('/accept-donation/:id', async (req, res) => {
   const donationId = req.params.id;
-  
+  const token = req.cookies.token;
+  console.log('token');
+  if (!token) {
+    return res.status(401).json({ message: "Access denied. No token provided." });
+  }
   try {
+    console.log('hi');
+      const decoded = jwt.verify(token, process.env.KEY);
+      const ngoUsername = decoded.username;
+      console.log(ngoUsername);
       const donation = await Donation.findById(donationId);
       if (!donation) {
           return res.status(404).json({ error: 'Donation not found' });
@@ -117,6 +128,7 @@ router.post('/accept-donation/:id', async (req, res) => {
           message: 'Your donation has been accepted by the NGO',
           status: 'Pending'
       });
+      donation.acceptedBy = ngoUsername; 
 
       await donation.save();
       res.status(200).json({ message: 'Donation accepted and user notified' });

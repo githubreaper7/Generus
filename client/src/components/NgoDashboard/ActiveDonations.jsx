@@ -9,7 +9,7 @@ const itemTypeNames = {
   blanketsShawls: "Blankets & Shawls",
   childrenClothes: "Children's Clothes",
   other: "Other"
-}; 
+};  
 
 const preferredDayNames = {
   weekdays: "Weekdays",
@@ -23,6 +23,7 @@ const ActiveDonations = () => {
   const [error, setError] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [donationToAccept, setDonationToAccept] = useState(null);
+  const [selectedDonator, setSelectedDonator] = useState(null);
 
   useEffect(() => {
     axios
@@ -53,7 +54,7 @@ const ActiveDonations = () => {
       setError(error.response?.data?.message || 'Error accepting donation');
     }
   };
- 
+
   const openDialog = (id) => {
     setDonationToAccept(id);
     setShowDialog(true);
@@ -64,7 +65,16 @@ const ActiveDonations = () => {
     setDonationToAccept(null);
   };
 
-
+  const handleViewDetails = async (email) => {
+    try {
+      const response = await axios.get(`http://localhost:4000/auth/donation-details/${email}`);
+      setSelectedDonator(response.data.donator);
+    } catch (error) {
+      console.error('Error fetching donation details:', error);
+      setError('Error fetching donation details');
+    }
+  };
+  
   const indexOfLastDonation = currentPage * donationsPerPage;
   const indexOfFirstDonation = indexOfLastDonation - donationsPerPage;
   const currentDonations = donations.slice(
@@ -115,13 +125,22 @@ const ActiveDonations = () => {
               <td>{donation.status === 'Pending' && (
                   <button onClick={() => openDialog(donation._id)}>Accept</button>
                 )}
-                {donation.status === 'Accepted by NGO' && <span>Accepted</span>}
-                {donation.status === 'Fully Accepted' && <span>Confirmed</span>}</td>
+                {donation.status === 'Accepted by NGO' && <span>Requested</span>}
+                {donation.status === 'Fully Accepted' && <button onClick={() => handleViewDetails(donation.email)}>View Details</button>}</td>
                 
             </tr>
           ))}
         </tbody>
       </table>
+      {selectedDonator && (
+  <div className="donator-details">
+    <h3>Donator Details</h3>
+    <p><strong>Email:</strong> {selectedDonator.email}</p>
+    <p><strong>Address:</strong> {selectedDonator.address}</p>
+    <p><strong>Contact Number:</strong> {selectedDonator.contactNumber}</p>
+    <button onClick={() => setSelectedDonator(null)}>Close</button>
+  </div>
+)}
       {showDialog && (
         <div className="dialog-overlay">
           <div className="dialog-box">
