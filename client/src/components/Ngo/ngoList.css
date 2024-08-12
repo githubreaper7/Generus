@@ -1,0 +1,46 @@
+.ngo-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  margin: 3rem 8rem;
+}
+
+.ngo-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.ngo-description {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.ngo-details {
+  font-size: 1em;
+  text-align: left;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ngo-location, .ngo-contact {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.location-icon, .phone-icon {
+  margin-right: 8px;
+  color: #555;
+  
+}
+
+.ngo-list-container{
+  margin-top: 8rem;
+}
+
+.ngoInfoHeading{
+  text-align: center;
+}
