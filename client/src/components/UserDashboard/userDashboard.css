@@ -7,8 +7,8 @@
 .back-home .home-icon .icon{
   font-size: 0.7rem;
   margin-right: 0.3rem;
-  
 }
+
 .back-home .home-icon{
   font-size: 0.6rem;
   color: black;
@@ -35,8 +35,8 @@
     margin: 2rem auto;
     border-radius: 10px;
     height: 88vh;
-  }
-    
+  } 
+     
   .user-navbar {
     flex: 1;
     background-color:#ECE5DA;

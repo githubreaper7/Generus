@@ -124,6 +124,21 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.get('/donation-details/:email', async (req, res) => {
+  try {
+    const email = req.params.email;
+    const donator = await Donator.findOne({ email }).select('-username -password');
+    if (!donator) {
+      return res.status(404).json({ status: false, message: 'Donator not found' });
+    }
+
+    res.json({ donator });
+  } catch (error) {
+    console.error('Error fetching donator details:', error);
+    res.status(500).json({ status: false, message: 'Server error' });
+  }
+});
+
 
 const verifyUser = async (req, res, next) => {
   try {

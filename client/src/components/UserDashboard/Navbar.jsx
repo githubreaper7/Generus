@@ -32,7 +32,7 @@ const Navbar = ({ onSelectOption, removeNav }) => {
           <button><Link to="/" className="home-icon">
             <h1><IoHome className="icon" />Home</h1>
           </Link></button>
-        </li>
+        </li> 
         <li>
           <button className={selected === "myDonations" ? "active": ""} 
           onClick={() => handleOptionClick("myDonations")}>My Donations</button>

@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import {Link} from "react-router-dom";
 import Navbar from "./Navbar";
 import MyDonations from './MyDonations';
 import EditProfile from './EditProfile';
@@ -15,7 +14,6 @@ const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState("myDonations");
   const { token } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   const [active, setActive] = useState("user-navbar")
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const UserDashboard = () => {
       </div>
     </div>
 
-  );
+  ); 
 }
 
 export default UserDashboard;

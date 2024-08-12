@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: space-between;
   background: #ece5da;
+  background-color: #EFF8FF;
   /* background-color: whitesmoke; */
   width: 95%;
   padding: 0.5rem;
@@ -36,10 +37,12 @@
 .header .logo .icon {
   font-size: 25px;
   color: lightcoral;
+
   transform: translateY(5px);
 }
 .header .logo span {
   color: lightcoral;
+
 }
 
 .navLists .btn-profile-icon{
