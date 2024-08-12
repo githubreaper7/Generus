@@ -40,11 +40,12 @@ app.use("/", DonationRouter);
 
 // async function insertNGOs() {
 //   const ngoDetails = {
-//     username: "ngo",
-//     email: "ngo@gmail.com",
-//     password: "ngo",
-//     contactNumber: "1234567890",
-//     description: "for orphans"
+//     username: "Helping Hands",
+//     email: "hh@gmail.com",
+//     password: "hh",
+//     contactNumber: "12345",
+//     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, rerum. Error ipsum modi officia doloribus quisquam tenetur distinctio dolorum odit quidem ex iste, consequatur, rerum, magni omnis? Nobis, quidem unde.",
+//     location:"Varanasi"
 //   };
 
 //   try { 
@@ -57,7 +58,8 @@ app.use("/", DonationRouter);
 //         email: ngoDetails.email,
 //         password: hashPassword,
 //         contactNumber: ngoDetails.contactNumber,
-//         description: ngoDetails.description
+//         description: ngoDetails.description,
+//         location: ngoDetails.location
 //       }
 //     ]);
 

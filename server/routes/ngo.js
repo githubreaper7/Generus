@@ -37,7 +37,26 @@ router.post("/ngoLogin", async (req, res) => {
     }
   }); 
 
+  router.get('/ngos', async (req, res) => {
+    try {
+      const { page = 1, limit = 10 } = req.query; // default to page 1 and limit 10
+      const ngos = await NgoInfo.find()
+        .limit(limit * 1)
+        .skip((page - 1) * limit)
+        .exec();
+      const count = await NgoInfo.countDocuments();
   
+      res.status(200).json({
+        status: true,
+        ngos,
+        totalPages: Math.ceil(count / limit),
+        currentPage: page,
+        total: count
+      });
+    } catch (error) {
+      res.status(500).json({ status: false, message: error.message });
+    }
+  });
   
   
   
