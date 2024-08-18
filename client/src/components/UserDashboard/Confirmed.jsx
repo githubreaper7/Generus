@@ -5,16 +5,15 @@ import './userDashboard.css';
 import { MdDelete } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 
-const MyDonations = () => {
+const Confirmed = () => {
   const { token, loading } = useContext(StoreContext);
   const [donations, setDonations] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
   const [donationToDelete, setDonationToDelete] = useState(null);
-  const [showNGO, setShowNGO] = useState(false);
   const [selectedNGO, setSelectedNGO] = useState(null);
- 
+  const [showNGO, setShowNGO] = useState(false);
   
   const customLabels = {
     menClothes: "Men's Clothes",
@@ -37,7 +36,7 @@ const MyDonations = () => {
     const fetchDonations = async () => {
       console.log("Token before API request:", token); 
       try {
-        const response = await axios.get('http://localhost:4000/user-donations', {
+        const response = await axios.get('http://localhost:4000/confirmed-donations', {
           // headers: {
           //   Authorization: `Bearer ${token}`,
           // },
@@ -101,6 +100,16 @@ const MyDonations = () => {
   const closeDialog = () => {
     setShowDialog(false);
     setDonationToDelete(null);
+  };
+
+  const handleViewDetails = async (email) => {
+    try {
+      const response = await axios.get(`http://localhost:4000/auth/ngo-details/${email}`);
+      setSelectedNGO(response.data.ngo);
+    } catch (error) {
+      console.error('Error fetching donation details:', error);
+      setError('Error fetching donation details');
+    }
   };
 
   // const handleShowNGO = () => {
@@ -182,16 +191,6 @@ const MyDonations = () => {
     }
   };
 
-  const handleViewDetails = async (email) => {
-    try {
-      const response = await axios.get(`http://localhost:4000/auth/ngo-details/${email}`);
-      setSelectedNGO(response.data.ngo);
-    } catch (error) {
-      console.error('Error fetching donation details:', error);
-      setError('Error fetching donation details');
-    }
-  };
-
   return (
 
     <div className='dash-user'>
@@ -222,7 +221,7 @@ const MyDonations = () => {
                 ) : donation.status === 'Accepted by NGO' ? (
                   <button className='accept-button' onClick={() => handleConfirm(donation._id)}>Confirm</button>
                 ) : (
-                  <button className='confirmed' onClick={() => handleViewDetails(donation.email)}>View Details</button>
+                  <button className='confirmed' onClick={() => handleViewDetails(donation.acceptedBy)}>View NGO Details</button>
                 )}</td>
               <td>{new Date(donation.createdAt).toLocaleDateString()}
               {donation.createdAt && (
@@ -236,7 +235,6 @@ const MyDonations = () => {
           ))}
         </tbody> 
       </table>
-
       {selectedNGO && (
   <div className="donator-details">
     <h3>NGO Details</h3>
@@ -393,4 +391,4 @@ const MyDonations = () => {
   )
 }
 
-export default MyDonations
+export default Confirmed
