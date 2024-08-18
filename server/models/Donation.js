@@ -22,7 +22,7 @@ const DonationSchema = new mongoose.Schema({
             childrenAgeGroups: ChildrenAgeGroupsSchema,
             description: String
         }
-    ], 
+    ],  
     season: {
         summer: Boolean,
         winter: Boolean,
@@ -47,4 +47,4 @@ const DonationSchema = new mongoose.Schema({
 })
 
 const DonationModel = mongoose.model("Donation", DonationSchema);
-export {DonationModel as Donation};
+export {DonationModel as Donation}; 

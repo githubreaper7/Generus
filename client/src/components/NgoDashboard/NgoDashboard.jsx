@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { IoMenu } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import Accepted from "./Accepted";
 
 const NgoDashboard = () => {
   const [selectedOption, setSelectedOption] = useState("active-donations");
@@ -23,6 +24,8 @@ const NgoDashboard = () => {
     switch (selectedOption) {
       case "active-donations":
         return <ActiveDonations />;
+      case "accepted-donations":
+        return <Accepted />
       case "editProfile":
         return <EditProfile />;
       default:

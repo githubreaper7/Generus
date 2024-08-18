@@ -9,7 +9,7 @@ const EditProfile = () => {
   const [loadingData, setLoadingData] = useState(true);
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-
+ 
   useEffect(() => {
     const fetchUser = async () => {
       try{

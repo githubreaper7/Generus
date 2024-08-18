@@ -41,6 +41,10 @@ const Navbar = ({ onSelectOption, removeNav }) => {
           <button className={selected === "editProfile" ? "active": ""}
           onClick={() => handleOptionClick("editProfile")}>Edit Profile</button>
         </li>
+        <li>
+          <button className={selected === "confirmed" ? "active": ""}
+          onClick={() => handleOptionClick("confirmed")}>Confirmed Donations</button>
+        </li>
         <li onClick={logout}>
           <button onClick={() => handleOptionClick("logout")} className="logout-button">Logout</button>
         </li> 

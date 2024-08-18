@@ -22,7 +22,7 @@ router.post("/ngoLogin", async (req, res) => {
       return res.json({ message: "Incorrect password" });
     }
   
-    const token = jwt.sign({ username: user.username, role: "ngo" }, process.env.KEY, {
+    const token = jwt.sign({ username: user.username, email: user.email, role: "ngo" }, process.env.KEY, {
       expiresIn: "1h",
     });
 
@@ -58,8 +58,21 @@ router.post("/ngoLogin", async (req, res) => {
     }
   });
   
+  router.get('/ngo-details/:email', async (req, res) => {
+    try {
+      const email = req.params.email;
+      const ngo = await NgoInfo.findOne({ email }).select('-description -password');
+      if (!ngo) {
+        return res.status(404).json({ status: false, message: 'NGO not found' });
+      }
   
-  
+      res.json({ ngo });
+    } catch (error) {
+      console.error('Error fetching donator details:', error);
+      res.status(500).json({ status: false, message: 'Server error' });
+    }
+  });
+   
   const verifyUser = async (req, res, next) => {
     try {
       const token = req.cookies.token;
