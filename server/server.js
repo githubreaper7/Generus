@@ -7,6 +7,7 @@ dotenv.config();
 import { DonationRouter } from "./routes/donation.js";
 import { DonatorRouter } from "./routes/donator.js";
 import { NgoRouter } from "./routes/ngo.js";
+import { AcceptedInfoRouter } from "./routes/acceptedInfo.js";
   
 const app = express();
 app.use(express.json());
@@ -33,6 +34,7 @@ mongoose
 app.use("/auth", DonatorRouter);
 app.use("/auth", NgoRouter);
 app.use("/", DonationRouter);
+app.use('/', AcceptedInfoRouter); 
 
 
 //code to insert NGO data manually given down below

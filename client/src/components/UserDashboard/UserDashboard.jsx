@@ -9,6 +9,7 @@ import { IoHome } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import Confirmed from "./Confirmed";
 
 const UserDashboard = () => {
   const [selectedOption, setSelectedOption] = useState("myDonations");
@@ -28,7 +29,9 @@ const UserDashboard = () => {
       case "myDonations":
         return <MyDonations />;
       case "editProfile":
-        return <EditUserProfile />;
+        return <EditProfile />;
+      case "confirmed":
+        return <Confirmed/>
       default:
         return null;
     }

@@ -57,7 +57,6 @@ router.post("/ngoLogin", async (req, res) => {
       res.status(500).json({ status: false, message: error.message });
     }
   });
-
   router.get('/getNgo', async (req, res) => {
     try {
       const token = req.cookies.token;
@@ -91,8 +90,6 @@ router.post("/ngoLogin", async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   });
-  
-  
   
   
   const verifyUser = async (req, res, next) => {

@@ -94,9 +94,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="navItem">
-              <a href="/ngoInfo" className="navLink"  onClick={closeNavOnItemClick}>
+              <Link to="/ngoInfo" className="navLink"  onClick={closeNavOnItemClick}>
                 NGOs
-              </a>
+              </Link>
             </li>
             {/* {token?(
               <li className="navItem">
