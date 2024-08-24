@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { StoreContext } from "../../context/StoreContext";
 
-const EditProfile = () => {
+const EditNgoProfile = () => {
   const { token, loading } = useContext(StoreContext);
   const [error, setError] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
@@ -13,9 +13,10 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try{
-        const response = await axios.get("http://localhost:4000/auth/getUser", {
+        const response = await axios.get("http://localhost:4000/auth/getNgo", {
           withCredentials: true,
         });
+        // console.log(response);
         setUser(response.data);
       }
       catch(error){
@@ -41,11 +42,12 @@ const EditProfile = () => {
     const { name, value } = e.target;
     setUser(prevState => ({ ...prevState, [name]: value }));
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    axios.put(`http://localhost:4000/auth/${user._id}`, user, { withCredentials: true })
+    axios.put(`http://localhost:4000/auth/editNgo/${user._id}`, user, { withCredentials: true })
       .then(response => {
         console.log('Profile updated:', response.data);
         alert('Profile updated successfully!');
@@ -60,7 +62,7 @@ const EditProfile = () => {
       <h2>Edit Profile</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Username</label>
+          <label>NGO Name</label>
           <input
             type="text"
             name="username"
@@ -69,11 +71,11 @@ const EditProfile = () => {
           />
         </div>
         <div>
-          <label>Address</label>
+          <label>Location</label>
           <input
             type="text"
-            name="address"
-            value={user?.address || ''}
+            name="location"
+            value={user?.location || ''}
             onChange={handleChange}
           />
         </div>
@@ -86,10 +88,19 @@ const EditProfile = () => {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label>Description</label>
+          <input
+            type="text"
+            name="description"
+            value={user?.description || ''}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit" className='btn'>Update Profile</button>
       </form>
     </div>
   );
 };
 
-export default EditProfile;
+export default EditNgoProfile;

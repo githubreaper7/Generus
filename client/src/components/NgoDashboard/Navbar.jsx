@@ -52,7 +52,7 @@ const Navbar = ({ onSelectOption, removeNav }) => {
       </li> 
       <li>
         <button className={selected === "active-donations" ? "active": ""} 
-        onClick={() => handleOptionClick("active-onations")}>All Donations</button>
+        onClick={() => handleOptionClick("active-donations")}>All Donations</button>
       </li>
       <li>
         <button className={selected === "editProfile" ? "active": ""}

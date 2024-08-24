@@ -1,7 +1,7 @@
 import React, { useState,useEffect, useContext } from "react";
 import Navbar from "./Navbar";
 import ActiveDonations from './ActiveDonations';
-import EditProfile from './EditProfile';
+import EditProfile from './EditNgoProfile';
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { IoMenu } from "react-icons/io5";

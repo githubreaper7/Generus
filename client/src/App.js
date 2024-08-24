@@ -11,7 +11,7 @@ import NgoLogin from "./components/Login/NgoLogin";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import NgoDashboard from "./components/NgoDashboard/NgoDashboard";
 import About from "./components/About/About";
-import EditProfile from './components/UserDashboard/EditProfile';
+import EditUserProfile from './components/UserDashboard/EditUserProfile';
 import NgoInfo from "./components/Ngo/NgoInfo";
 
 function App() {
@@ -43,7 +43,7 @@ function MainRoutes() {
         <Route path="/ngoLogin" element={<NgoLogin />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/ngoDashboard" element={<NgoDashboard />} />
-        <Route path="/editProfile/:id" element={<EditProfile />} />
+        <Route path="/editProfile/:id" element={<EditUserProfile />} />
       </Routes>
       {!hideFooterPaths.includes(location.pathname) && <Footer />}
     </>

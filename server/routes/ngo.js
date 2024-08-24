@@ -22,7 +22,7 @@ router.post("/ngoLogin", async (req, res) => {
       return res.json({ message: "Incorrect password" });
     }
   
-    const token = jwt.sign({ username: user.username, role: "ngo" }, process.env.KEY, {
+    const token = jwt.sign({ email: user.email, role: "ngo"}, process.env.KEY, {
       expiresIn: "1h",
     });
 
@@ -57,6 +57,41 @@ router.post("/ngoLogin", async (req, res) => {
       res.status(500).json({ status: false, message: error.message });
     }
   });
+
+  router.get('/getNgo', async (req, res) => {
+    try {
+      const token = req.cookies.token;
+      if(!token){
+        return res.status(401).json({message: 'Access denied'});
+      }
+      const decoded = jwt.verify(token, process.env.KEY);
+      const email = decoded.email;
+      console.log(email); 
+  
+      const user = await NgoInfo.findOne({email});
+      res.json(user); 
+    } catch (error) {
+      res.status(500).json({message: 'Error'});
+    }
+  })
+  router.put('/editNgo/:id', async (req, res) => {
+    const { id } = req.params;
+    const { username, location, contactNumber, description } = req.body;
+    try {
+      const updatedNgo = await NgoInfo.findByIdAndUpdate(
+        id,
+        { username, location, contactNumber, description },
+        { new: true, runValidators: true }
+      );
+      if (!updatedNgo) {
+        return res.status(404).json({ message: 'Ngo not found' });
+      }
+      res.json(updatedNgo);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
   
   
   

@@ -98,7 +98,7 @@ const Navbar = () => {
                 NGOs
               </a>
             </li>
-            {token?(
+            {/* {token?(
               <li className="navItem">
               <p className="navLink" onClick={handleDashboardClick} style={{ cursor: 'pointer' }}>
                 Dashboard
@@ -106,7 +106,7 @@ const Navbar = () => {
             </li>
             ):(
               null
-            )}
+            )} */}
  
             {token ? ( 
               <button className="btn-profile-icon" onClick={handleDashboardClick}>

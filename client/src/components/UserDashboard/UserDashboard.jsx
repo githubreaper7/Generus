@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Navbar from "./Navbar";
 import MyDonations from './MyDonations';
-import EditProfile from './EditProfile';
+import EditUserProfile from './EditUserProfile';
 import './userDashboard.css';
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
@@ -28,7 +28,7 @@ const UserDashboard = () => {
       case "myDonations":
         return <MyDonations />;
       case "editProfile":
-        return <EditProfile />;
+        return <EditUserProfile />;
       default:
         return null;
     }
