@@ -9,7 +9,7 @@ const Data = [
     id: 1,
     imgSrc: <RiUser3Fill />,
     title: "Login to our website",
-    description: "Login as a donor"
+    description: "Login with your registered credentials"
   },
   {
     id: 2,

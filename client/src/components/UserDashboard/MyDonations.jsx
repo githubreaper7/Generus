@@ -234,6 +234,7 @@ const MyDonations = () => {
               </td>
             </tr>
           ))}
+          
         </tbody> 
       </table>
 
