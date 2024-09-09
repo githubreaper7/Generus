@@ -7,15 +7,16 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  margin-bottom: 3rem;
   /* border-radius: 10px; */
-  padding: 1.5rem 0;
+  padding: 1.8rem 0;
 }
 .main .steps-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FAF6F1;
+  background-color: white;
   width: 95%;
   border-radius: 10px;
   padding: 0.5rem 0;
@@ -25,7 +26,7 @@
   width: -moz-max-content;
   width: max-content;
   z-index: 2;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   color: #4B4643;
 }
 .main .steps-container .secContent {
@@ -35,14 +36,16 @@
   margin-top: 1rem;
 }
 .main .steps-container .secContent .singleCard {
-  width: 18rem;
-  height: 18rem;
+  width: 20rem;
+  height: 20rem;
   padding: 1rem;
   border-radius: 15px;
   overflow: hidden;
-  border: 1.6px solid #817D7A;
+  box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  /* border: 1.6px solid #817D7A; */
   margin: 0.5rem 3rem;
   background: transparent;
+  background: #F9F9F9;
   display: flex;
   flex-direction: column;
   align-items: center;

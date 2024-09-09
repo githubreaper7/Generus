@@ -29,7 +29,7 @@ const UserDashboard = () => {
       case "myDonations":
         return <MyDonations />;
       case "editProfile":
-        return <EditProfile />;
+        return <EditUserProfile />;
       case "confirmed":
         return <Confirmed/>
       default:

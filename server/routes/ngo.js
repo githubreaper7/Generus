@@ -91,6 +91,20 @@ router.post("/ngoLogin", async (req, res) => {
     }
   });
   
+  router.get('/ngo-details/:email', async (req, res) => {
+      try {
+        const {email} = req.params;
+        const ngo = await NgoInfo.findOne({email: email});
+        if (!ngo) {
+          return res.status(404).json({ message: 'NGO not found' });
+        }
+    
+        res.status(200).json({ ngo });
+      } catch (error) {
+        console.error('Error fetching NGO details:', error);
+        res.status(500).json({ message: 'Server error' });
+      }
+  })
   
   const verifyUser = async (req, res, next) => {
     try {

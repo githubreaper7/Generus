@@ -8,6 +8,8 @@
   border-radius: 10px;
   z-index: 100;
   background-color: #cbb590;
+  background-color: #C8D4DE;
+  background-color: #E5E1DA;
   padding: 2rem 1.6rem;
   flex-direction: column;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -103,7 +105,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
-    padding: 2rem 3.5rem;
+    padding: 4rem 3.5rem;
   }
 
   .footer .secContent{

@@ -68,7 +68,7 @@ router.post("/userLogin", async (req, res) => {
         expiresIn: "1h",
       }
     );
-
+ 
     const expiryTime = 3600; // 1 hour in seconds
     res.cookie("token", token, { httpOnly: true, maxAge: expiryTime * 1000 });
     res.json({ status: true, message: "Login successful!", token, expiryTime });

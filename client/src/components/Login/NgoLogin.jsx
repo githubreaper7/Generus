@@ -39,7 +39,7 @@ const NgoLogin = () => {
   return (
     <div className="sign-up-container">
       <form className="sign-up-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>Login as an NGO</h2>
         
         <label htmlFor="email">Email:</label>
         <input

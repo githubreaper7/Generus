@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react'
-import { useNavigate } from "react-router-dom";
+import React, {useContext, useEffect, useState} from 'react'
+import { useNavigate, Link } from "react-router-dom";
 import './home.css'
 import video from '../../assets/cover_video.mp4'
 import Main from '../Main/Main'
@@ -11,6 +11,7 @@ const Home = () => {
   }, []);
   const {token}=useContext(StoreContext);
   const navigate = useNavigate();
+  const [showDialog, setShowDialog] = useState(false);
 
   const handleJoinUs = () => {
     if(token){
@@ -20,7 +21,8 @@ const Home = () => {
       navigate('/choose');
     }
   };
-  return (
+
+  return ( 
     <>
     <section className="home">
       <div className="overlay"></div>
@@ -37,6 +39,22 @@ const Home = () => {
             <button className="homeTitle btn home-button" onClick={handleJoinUs}>Join us</button>
           </div>
         </div>
+
+        {token && <div className="pay-pop">
+          <button onClick={() => setShowDialog(true)}>Donate Amount</button>
+        </div>}
+        {showDialog && (
+        <div className="dialog-overlay">
+          <div className="dialog-box">
+            <p>Click proceed to make payment to an NGO</p>
+            <div className="dialog-buttons">
+            <button><Link to="/ngoInfo">Proceed</Link></button>
+            <button onClick={() => setShowDialog(false)}>Close</button>
+
+            </div>
+          </div>
+        </div>
+      )}
     </section>
         <Main/> 
     

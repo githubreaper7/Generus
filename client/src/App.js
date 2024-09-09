@@ -11,8 +11,10 @@ import NgoLogin from "./components/Login/NgoLogin";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import NgoDashboard from "./components/NgoDashboard/NgoDashboard";
 import About from "./components/About/About";
-import EditUserProfile from './components/UserDashboard/EditUserProfile';
+import EditUserProfile from './components/UserDashboard/EditUserProfile.jsx';
 import NgoInfo from "./components/Ngo/NgoInfo";
+import PayAmount from "./components/PayAmount.jsx";
+import PaymentSuccess from "./components/PaymentSuccess.jsx";
 
 function App() {
   const location = useLocation();
@@ -44,6 +46,8 @@ function MainRoutes() {
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/ngoDashboard" element={<NgoDashboard />} />
         <Route path="/editProfile/:id" element={<EditUserProfile />} />
+        <Route path="/pay-amount" element={<PayAmount />} />
+        <Route path="/paymentsuccess" element={<PaymentSuccess />} />
       </Routes>
       {!hideFooterPaths.includes(location.pathname) && <Footer />}
     </>
