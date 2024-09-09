@@ -43,10 +43,17 @@ li{
 .btn{
   padding: 0.6rem 1.5rem;
   background: #dcc0bd;
+  background: #F2B1A6;
+  background: #96B6C5;
+  /* color: white; */
+  /* background: #76A78C;
+  background: #9BBFAC; */
+
   border-radius: 3rem;
   outline: none;
   cursor: pointer;
-  border: 1px solid #F08080;
+  border: 1px solid #738b97;
+  /* border: 1px solid #76A78C; */
 }
 
 .btn a{

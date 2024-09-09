@@ -3,22 +3,28 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import bcrypt from "bcrypt";
+import Razorpay from "razorpay";
 dotenv.config();
 import { DonationRouter } from "./routes/donation.js";
 import { DonatorRouter } from "./routes/donator.js";
 import { NgoRouter } from "./routes/ngo.js";
 import { AcceptedInfoRouter } from "./routes/acceptedInfo.js";
-  
+import paymentRouter from "./routes/paymentRoutes.js";
+import { NgoInfo } from "./models/NgoInfo.js";
+
 const app = express();
 app.use(express.json());
-app.use(
+app.use(express.urlencoded({ extended: true }));
+
+app.use( 
   cors({
     origin: ["http://localhost:3000"],
-    credentials: true,
-  })
+    credentials: true, 
+  })  
 );
-app.use(cookieParser());
-
+app.use(cookieParser()); 
+ 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
@@ -29,13 +35,28 @@ mongoose
   })
   .catch((error) => {
     console.log(error);
-  });  
- 
+  });   
+    
+  export const instance = new Razorpay({
+    key_id: process.env.RAZORPAY_API_KEY,
+    key_secret: process.env.RAZORPAY_API_SECRET,
+  }); 
+  
 app.use("/auth", DonatorRouter);
 app.use("/auth", NgoRouter);
 app.use("/", DonationRouter);
 app.use('/', AcceptedInfoRouter); 
-
+app.use("/api", paymentRouter);
+app.get("/api/getkey", (req, res) =>{
+  try {
+    // console.log('Razorpay API Key:', process.env.RAZORPAY_API_KEY);
+    res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
+  } catch (error) {
+    console.error("Error fetching Razorpay API key:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}); 
+ 
 
 //code to insert NGO data manually given down below
 
@@ -47,7 +68,7 @@ app.use('/', AcceptedInfoRouter);
 //     password: "hh",
 //     contactNumber: "12345",
 //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, rerum. Error ipsum modi officia doloribus quisquam tenetur distinctio dolorum odit quidem ex iste, consequatur, rerum, magni omnis? Nobis, quidem unde.",
-//     location:"Varanasi"
+//     location:"Varanasi",
 //   };
 
 //   try { 

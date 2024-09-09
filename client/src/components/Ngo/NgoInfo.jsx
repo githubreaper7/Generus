@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import "./ngoList.css";
+import { StoreContext } from "../../context/StoreContext";
 
 const NgoCard = ({ ngo }) => {
+  const {token}=useContext(StoreContext);
+  const navigate = useNavigate();
+
+  const handleDonateClick = () => {
+    navigate('/pay-amount', { state: { username: ngo.username } });
+  };
+ 
   return (
-    <>
+    <> 
     {/* <div className="ngoInfoHeading">
         <p></p>
-    </div> */}
+    </div> */} 
     <div className="ngo-card">
+      
+      <div className="left-details">
       <h2 className="ngo-name">{ngo.username}</h2>
-      <p className="ngo-description">{ngo.description}</p>
       <div className="ngo-details">
         <div className="ngo-location">
           <FaMapMarkerAlt className="location-icon" />
@@ -22,6 +32,12 @@ const NgoCard = ({ ngo }) => {
           <span>{ngo.contactNumber}</span>
         </div>
       </div>
+      {token && <div className="pay-ngo">
+        <button onClick={handleDonateClick}>Donate Amount</button>
+      </div>}
+      </div>
+      
+      <p className="ngo-description">{ngo.description}</p>
     </div>
     </>
     
@@ -33,7 +49,7 @@ const NgoList = () => {
   const [totalNgos, setTotalNgos] = useState(0); // Track total number of NGOs
   const [currentPage, setCurrentPage] = useState(1);
   const ngosPerPage = 10;
-
+  
   useEffect(() => {
     axios
       .get(`http://localhost:4000/auth/ngos?page=${currentPage}&limit=${ngosPerPage}`)

@@ -198,7 +198,7 @@ const MyDonations = () => {
       <h1 className='table-heading'>My Donations</h1>
       <table className='my-donations-table'>
         <thead>
-          <tr>
+          <tr> 
             <th>Clothing Items</th>
             <th>Season</th>
             <th>Quantity</th>

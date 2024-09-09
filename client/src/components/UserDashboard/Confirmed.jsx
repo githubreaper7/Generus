@@ -3,7 +3,7 @@ import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext'
 import './userDashboard.css';
 import { MdDelete } from "react-icons/md";
-import { IoMdTime } from "react-icons/io";
+import { IoMdTime } from "react-icons/io"; 
 
 const Confirmed = () => {
   const { token, loading } = useContext(StoreContext);
@@ -13,8 +13,7 @@ const Confirmed = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [donationToDelete, setDonationToDelete] = useState(null);
   const [selectedNGO, setSelectedNGO] = useState(null);
-  const [showNGO, setShowNGO] = useState(false);
-  
+ 
   const customLabels = {
     menClothes: "Men's Clothes",
     womenClothes: "Women's Clothes",
@@ -96,7 +95,7 @@ const Confirmed = () => {
     setDonationToDelete(id);
     setShowDialog(true);
   };
-
+ 
   const closeDialog = () => {
     setShowDialog(false);
     setDonationToDelete(null);
@@ -111,14 +110,6 @@ const Confirmed = () => {
       setError('Error fetching donation details');
     }
   };
-
-  // const handleShowNGO = () => {
-  //   setShowNGO(true);
-  // }
-
-  // const closeShowNGO = () => {
-  //   setShowNGO(false);
-  // }
 
   const renderClothingItems = (clothingItems) => {
    
@@ -245,13 +236,6 @@ const Confirmed = () => {
     <button onClick={() => setSelectedNGO(null)}>Close</button>
   </div>
 )}
-{/* 
-      {showNgo && (
-        <div>
-          <p>Your donation is accepted by {donation.acceptedBy}!</p>
-          <button onClick={closeShowNGO}>Close</button>
-        </div>
-      )} */}
 
       {showDialog && (
         <div className="dialog-overlay">

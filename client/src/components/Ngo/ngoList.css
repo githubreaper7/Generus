@@ -1,11 +1,12 @@
 .ngo-card {
   background-color: #fff;
+  border: 1px solid black;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 3rem 5rem;
   margin: 20px;
   text-align: center;
-  margin: 3rem 8rem;
+  margin: 4rem 8rem;
 }
 
 .ngo-name {
@@ -15,7 +16,16 @@
 
 .ngo-description {
   font-size: 1em;
-  margin-bottom: 20px;
+  margin: 0 4rem;
+  margin-bottom: 2rem;
+  
+}
+
+.pay-ngo button{
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  background-color: green;
+  cursor: pointer;
 }
 
 .ngo-details {
@@ -43,4 +53,5 @@
 
 .ngoInfoHeading{
   text-align: center;
+  
 }
