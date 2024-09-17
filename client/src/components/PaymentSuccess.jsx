@@ -1,15 +1,13 @@
 import React from 'react'
-import { useSearchParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const PaymentSuccess = () => {
     
-    const seachQuery = useSearchParams()[0]
-
-    const referenceNum = seachQuery.get("reference")
   return (
     <div className='pay-amount'>
       <h2>Payment successful</h2>
-      <p>Reference No.{referenceNum}</p>
+      <p>Thank you for your contribution. Each effort counts!</p>
+      <p>Go to <Link to="/">Home page</Link></p>
     </div>
   ) 
 }

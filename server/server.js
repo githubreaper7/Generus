@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import bcrypt from "bcrypt";
-import Razorpay from "razorpay";
 dotenv.config();
 import { DonationRouter } from "./routes/donation.js";
 import { DonatorRouter } from "./routes/donator.js";
@@ -13,12 +12,12 @@ import { AcceptedInfoRouter } from "./routes/acceptedInfo.js";
 import paymentRouter from "./routes/paymentRoutes.js";
 import { NgoInfo } from "./models/NgoInfo.js";
 
-const app = express();
+const app = express(); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use( 
-  cors({
+app.use(  
+  cors({ 
     origin: ["http://localhost:3000"],
     credentials: true, 
   })  
@@ -34,25 +33,20 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.log(error); 
   });   
-    
-  export const instance = new Razorpay({
-    key_id: process.env.RAZORPAY_API_KEY,
-    key_secret: process.env.RAZORPAY_API_SECRET,
-  }); 
+     
   
 app.use("/auth", DonatorRouter);
 app.use("/auth", NgoRouter);
 app.use("/", DonationRouter);
 app.use('/', AcceptedInfoRouter); 
 app.use("/api", paymentRouter);
-app.get("/api/getkey", (req, res) =>{
+app.get("/api/getkey", (req, res) =>{ 
   try {
-    // console.log('Razorpay API Key:', process.env.RAZORPAY_API_KEY);
-    res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
+    res.status(200).json({ key: process.env.PUBLISHABLE_API_KEY });
   } catch (error) {
-    console.error("Error fetching Razorpay API key:", error);
+    console.error("Error fetching Stripe API key:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }); 
