@@ -14,7 +14,7 @@ const NgoCard = ({ ngo }) => {
   };
  
   return (
-    <> 
+    <>  
     {/* <div className="ngoInfoHeading">
         <p></p>
     </div> */} 

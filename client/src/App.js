@@ -15,6 +15,7 @@ import EditUserProfile from './components/UserDashboard/EditUserProfile.jsx';
 import NgoInfo from "./components/Ngo/NgoInfo";
 import PayAmount from "./components/PayAmount.jsx";
 import PaymentSuccess from "./components/PaymentSuccess.jsx";
+import PaymentCancel from "./components/PaymentCancel.jsx";
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function MainRoutes() {
         <Route path="/editProfile/:id" element={<EditUserProfile />} />
         <Route path="/pay-amount" element={<PayAmount />} />
         <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+        <Route path="/paymentcancel" element={<PaymentCancel />} />
       </Routes>
       {!hideFooterPaths.includes(location.pathname) && <Footer />}
     </>
