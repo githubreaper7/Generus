@@ -19,9 +19,14 @@ const NgoCard = ({ ngo }) => {
         <p></p>
     </div> */} 
     <div className="ngo-card">
-      
+       
       <div className="left-details">
       <h2 className="ngo-name">{ngo.username}</h2>
+      <p className="ngo-description">{ngo.description}</p>
+      
+      </div> 
+
+      <div className="right-details">
       <div className="ngo-details">
         <div className="ngo-location">
           <FaMapMarkerAlt className="location-icon" />
@@ -37,7 +42,7 @@ const NgoCard = ({ ngo }) => {
       </div>}
       </div>
       
-      <p className="ngo-description">{ngo.description}</p>
+      
     </div>
     </>
     

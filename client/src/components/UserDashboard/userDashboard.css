@@ -85,7 +85,7 @@
   } 
 
   .dashboard-navbar .logout-button:hover{
-    background-color: rgb(163, 71, 71);
+    background-color: red;
     color: white;
   } 
   
@@ -211,6 +211,7 @@
     height: 25px;
     border-radius: 50%;
     background-color: #C35757;
+    background-color: #96B6C5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,6 +232,7 @@
     height: 100%;
     border-radius: 10px;
     background-color: rgb(184, 91, 91);
+    background-color: #96B6C5;
     z-index: 1;
 }
 
@@ -245,7 +247,9 @@
 .delete-item{
   font-size: 1.5rem;
   color: #C35757;
+  color: red;
   border: 1px solid #C35757;
+  border: 1px solid red;
   border-radius: 50px;
   text-align: center;
   height: 2rem;
@@ -257,7 +261,9 @@
 .delete-item:hover{
   color: white;
   border: 1px solid #C35757;
+  border: 1px solid red;
   background: #C35757;
+  background: red;
 }
 
 .my-donations-table .pending {
@@ -265,19 +271,19 @@
 }
  
 .pending {
-  color: seagreen;
-  margin-top: 23px;
+  color: green;
+  /* margin-top: 23px; */ 
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  justify-content: center;
+  /* border: 1px solid black; */
   border-radius: 15px;
-  background-color: rgb(158, 188, 197);
+  background-color: lightgreen;
   padding: 0; /* Adjust this padding as needed */
 }
 
 .pending svg {
-  margin-right: 5px;
-  color: seagreen; /* Space between icon and text */
+  color: green; /* Space between icon and text */
 }
 
 .dialog-overlay {

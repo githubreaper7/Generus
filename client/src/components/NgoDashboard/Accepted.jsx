@@ -95,8 +95,8 @@ const Accepted = () => {
               <td>{preferredDayNames[donation.preferredDay]}</td>
               <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
               <td>
-                {donation.status === 'Accepted by NGO' && <span>Requested</span>}
-                {donation.status === 'Fully Accepted' && <button onClick={() => handleViewDetails(donation.email)}>View Details</button>}</td>
+                {donation.status === 'Accepted by NGO' && <span className="requested">Requested</span>}
+                {donation.status === 'Fully Accepted' && <button onClick={() => handleViewDetails(donation.email)} className="confirmed">View Details</button>}</td>
                 
             </tr>
           ))}

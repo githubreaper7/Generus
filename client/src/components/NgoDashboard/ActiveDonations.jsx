@@ -123,10 +123,10 @@ const ActiveDonations = () => {
               <td>{preferredDayNames[donation.preferredDay]}</td>
               <td>{new Date(donation.createdAt).toLocaleDateString()}</td>
               <td>{donation.status === 'Pending' && (
-                  <button onClick={() => openDialog(donation._id)}>Accept</button>
+                  <button onClick={() => openDialog(donation._id)} className="accept-button">Accept</button>
                 )}
-                {donation.status === 'Accepted by NGO' && <span>Requested</span>}
-                {donation.status === 'Fully Accepted' && <button onClick={() => handleViewDetails(donation.email)}>View Details</button>}</td>
+                {donation.status === 'Accepted by NGO' && <span className="requested">Requested</span>}
+                {donation.status === 'Fully Accepted' && <button onClick={() => handleViewDetails(donation.email)} className="confirmed">View Details</button>}</td>
                 
             </tr>
           ))}
