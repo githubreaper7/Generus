@@ -98,7 +98,7 @@ const Navbar = () => {
                 NGOs
               </Link>
             </li>
-            {/* {token?(
+            {/* {token?( 
               <li className="navItem">
               <p className="navLink" onClick={handleDashboardClick} style={{ cursor: 'pointer' }}>
                 Dashboard

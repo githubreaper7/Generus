@@ -54,9 +54,9 @@
   color: black;
   /* background-color: lightcoral; */
   /* border: 2px solid rgb(146, 57, 57); */
-  border: 2px solid black;
+  /* border: 2px solid black; */
   padding: 0.2rem 0.5rem;
-  border-radius: 20px;
+  border-radius: 5px;
   align-items: center;
   justify-content: center;
   cursor: pointer;

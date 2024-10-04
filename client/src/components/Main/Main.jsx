@@ -35,7 +35,7 @@ const Main = () => {
           How to proceed
         </h3>
       </div>
-
+ 
       <div className="secContent grid">
         {Data.map(({id, imgSrc, title, description}) => {
           return(

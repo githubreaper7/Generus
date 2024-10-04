@@ -124,6 +124,7 @@
   height: 25px;
   border-radius: 50%;
   background-color: #C35757;
+  background-color: #96B6C5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,6 +144,7 @@
   height: 100%;
   border-radius: 10px;
   background-color: rgb(184, 91, 91);
+  background-color: #96B6C5;
   z-index: 1;
 }
 
@@ -180,19 +182,18 @@ padding: 0; /* Remove padding for this specific cell */
 }
 
 .pending {
-color: seagreen;
-margin-top: 23px;
+color: green;
+/* margin-top: 23px; */
 display: flex;
 align-items: center;
-border: 1px solid black;
+/* border: 1px solid black; */
 border-radius: 15px;
-background-color: rgb(158, 188, 197);
+background-color: lightgreen;
 padding: 0; /* Adjust this padding as needed */
 }
 
 .pending svg {
-margin-right: 5px;
-color: seagreen; /* Space between icon and text */
+color: green; /* Space between icon and text */
 }
 
 .dialog-overlay {
@@ -254,7 +255,7 @@ background-color: #ddd;
   background-color: #007bff;
   color: white;
 }
-
+ 
 .donator-details {
   position: fixed;
   top: 50%;
@@ -289,3 +290,23 @@ background-color: #ddd;
   background-color: #0056b3;
 }
 
+.accept-button{
+  border-radius: 5px;
+  padding: 2px 5px;
+  cursor: pointer;
+  color: green;
+  background-color: lightgreen;
+}
+
+.confirmed{
+  border-radius: 5px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.requested{
+  color: rgb(174, 174, 0);
+  background-color: lightyellow;
+  border-radius: 15px;
+  padding: 1px;
+}

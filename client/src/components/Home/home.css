@@ -84,15 +84,21 @@
 .pay-pop{
   position: relative;
   z-index: 2000;
-  top: 87vh;
-  left: 87vw;
+  top: 84vh;
+  left: 91vw;
   position: fixed;
 }
 .pay-pop button{
   border-radius: 50px;
-  width: 9rem;
-  padding: 0.5rem 1rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.9rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* padding: 2px 2px; */
   background: #b2c9ab;
+  background: gold;
   border: 2px solid #8fa08a;
   cursor: pointer;
 }

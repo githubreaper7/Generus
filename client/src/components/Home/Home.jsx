@@ -4,6 +4,7 @@ import './home.css'
 import video from '../../assets/cover_video.mp4'
 import Main from '../Main/Main'
 import { StoreContext } from '../../context/StoreContext';
+import { FaDonate } from "react-icons/fa";
 
 const Home = () => {
   useEffect(() => {
@@ -41,7 +42,7 @@ const Home = () => {
         </div>
 
         {token && <div className="pay-pop">
-          <button onClick={() => setShowDialog(true)}>Donate Amount</button>
+          <button onClick={() => setShowDialog(true)}><FaDonate /></button>
         </div>}
         {showDialog && (
         <div className="dialog-overlay">

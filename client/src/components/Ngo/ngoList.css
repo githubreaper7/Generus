@@ -5,10 +5,23 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 3rem 5rem;
   margin: 20px;
-  text-align: center;
   margin: 4rem 8rem;
+  display: flex;
+  justify-content: space-between;
+  height: 17rem;
+  /* box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.3); */
 }
- 
+  
+.left-details{
+  width: 50%;
+}
+
+.right-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
 .ngo-name {
   font-size: 1.5em;
   margin-bottom: 10px;
@@ -16,15 +29,13 @@
 
 .ngo-description {
   font-size: 1em;
-  margin: 0 4rem;
   margin-bottom: 2rem;
-  
 }
 
 .pay-ngo button{
   padding: 0.5rem 2rem;
   border-radius: 10px;
-  background-color: green;
+  background-color: gold;
   cursor: pointer;
 }
 
@@ -32,7 +43,8 @@
   font-size: 1em;
   text-align: left;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .ngo-location, .ngo-contact {
