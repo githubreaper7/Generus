@@ -80,7 +80,8 @@ router.get("/user-donations", async (req, res) => {
 router.get("/confirmed-donations", async (req, res) => {
   try {
     // const token = req.cookies.token || req.headers['authorization']?.split(' ')[1];
-    const token = req.cookies.token;
+    // const token = req.cookies.token;
+    const token = localStorage.getItem('token');
     if (!token) {
       return res
         .status(401)
