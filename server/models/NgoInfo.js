@@ -6,7 +6,10 @@ const NgoInfoSchema = new mongoose.Schema({
   password: { type: String, required: true },
   contactNumber: { type: String, required: true },
   description: { type: String, required: true },
-  location: { type: String, required: true } // Added location field
+  location: { type: String, required: true },
+  stripePublishableKey: { type: String, default: null }, // Default set to null
+  stripeSecretKey: { type: String, default: null },      // Default set to null
+  supportsPayments: { type: Boolean, default: false },  // Explicit flag for payment support
 });
 
 const NgoModel = mongoose.model("NgoInfo", NgoInfoSchema);
