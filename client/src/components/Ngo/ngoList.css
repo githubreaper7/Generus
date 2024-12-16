@@ -38,6 +38,10 @@
   background-color: gold;
   cursor: pointer;
 }
+.pay-ngo .no-payments {
+  background-color: rgb(250, 250, 248);
+}
+
 
 .ngo-details {
   font-size: 1em;

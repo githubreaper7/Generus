@@ -6,48 +6,49 @@ import "./ngoList.css";
 import { StoreContext } from "../../context/StoreContext";
 
 const NgoCard = ({ ngo }) => {
-  const {token}=useContext(StoreContext);
+  const { token } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const handleDonateClick = () => {
-    navigate('/pay-amount', { state: { username: ngo.username } });
+    navigate('/pay-amount', { state: { email: ngo.email } });
   };
- 
-  return (
-    <>  
-    {/* <div className="ngoInfoHeading">
-        <p></p>
-    </div> */} 
-    <div className="ngo-card">
-       
-      <div className="left-details">
-      <h2 className="ngo-name">{ngo.username}</h2>
-      <p className="ngo-description">{ngo.description}</p>
-      
-      </div> 
 
-      <div className="right-details">
-      <div className="ngo-details">
-        <div className="ngo-location">
-          <FaMapMarkerAlt className="location-icon" />
-          <span>{ngo.location}</span>
+  const supportsOnlinePayments = ngo.stripePublishableKey && ngo.stripePublishableKey.trim() !== "";
+
+  return (
+    <>
+      <div className="ngo-card">
+        <div className="left-details">
+          <h2 className="ngo-name">{ngo.username}</h2>
+          <p className="ngo-description">{ngo.description}</p>
         </div>
-        <div className="ngo-contact">
-          <FaPhoneAlt className="phone-icon" />
-          <span>{ngo.contactNumber}</span>
+
+        <div className="right-details">
+          <div className="ngo-details">
+            <div className="ngo-location">
+              <FaMapMarkerAlt className="location-icon" />
+              <span>{ngo.location}</span>
+            </div>
+            <div className="ngo-contact">
+              <FaPhoneAlt className="phone-icon" />
+              <span>{ngo.contactNumber}</span>
+            </div>
+          </div>
+          {token && (
+            <div className="pay-ngo">
+              {supportsOnlinePayments ? (
+                <button onClick={handleDonateClick}>Donate</button>
+              ) : (
+                <button className="no-payments">Not available</button>
+              )}
+            </div>
+          )}
         </div>
       </div>
-      {token && <div className="pay-ngo">
-        <button onClick={handleDonateClick}>Donate Amount</button>
-      </div>}
-      </div>
-      
-      
-    </div>
     </>
-    
   );
 };
+
 
 const NgoList = () => {
   const [ngos, setNgos] = useState([]);
